@@ -1,0 +1,240 @@
+    1  yum install git -y
+    2  vim /etc/ssh/sshd_config 
+    3  systemctl restart sshd
+    4  passwd root 
+    5  mkdir /gitproject
+    6  cd /gitproject/
+    7  mkdir project
+    8  cd project/
+    9  git --version
+   10  git init
+   11  ls -al
+   12  ls .git/
+   13  vim index.html
+   14  git status
+   15  ls
+   16  git ls-files
+   17  git add index.html 
+   18  git status
+   19  git ls-files
+   20  git commit -m "this is first commit"
+   21  git commit --global user.name "devops"
+   22  git commit --global user.email "devops@gmail.com"
+   23  git ls-files
+   24  git status 
+   25  git log
+   26  git log --oneline
+   27  ###############
+   28  vim login.java
+   29  ls
+   30  git status 
+   31  cd /gitproject/project/
+   32  ls
+   33  git status 
+   34  git add login.java 
+   35  git status 
+   36  git ls-files
+   37  git commit -m "login file is added"
+   38  git log 
+   39  git log --oneline 
+   40  ############
+   41  vim index.html 
+   42  ls
+   43  git status 
+   44  git add index.html 
+   45  git status 
+   46  git commit -m "modified index page"
+   47  git status 
+   48  git log 
+   49  git log --oneline
+   50  vim login.java 
+   51  git status 
+   52  git commit -a -m "modified login page"
+   53  git status 
+   54  git log 
+   55  git log --oneline
+   56  ###############
+   57  # git diff
+   58  vim index.html 
+   59  git status 
+   60  git diff index.html
+   61  git diff --staged index.html
+   62  git add index.html 
+   63  git diff --staged index.html
+   64  git diff index.html
+   65  vim index.html 
+   66  git diff index.html
+   67  git diff --staged index.html
+   68  git status 
+   69  git commit -a -m "added staged and unstaged changes"
+   70  git status 
+   71  git diff --staged index.html
+   72  git diff index.html
+   73  ############
+   74  # remove file from working and local repo
+   75  ls
+   76  git rm login.java 
+   77  ls
+   78  git ls-files
+   79  git log 
+   80  git status 
+   81  cd /gitproject/project/
+   82  git status 
+   83  git commit -m "deleted login file"
+   84  git status 
+   85  ls
+   86  git ls-files
+   87  vim abc.txt
+   88  ############
+   89  #git ignore file
+   90  git status 
+   91  git add abc.txt 
+   92  git commit -m "added abc.txt"
+   93  git status 
+   94  git log 
+   95  git log --oneline 
+   96  vim .gitignore
+   97  git status 
+   98  git add .gitignore 
+   99  git commit -m "added .gitignore file for abc.txt"
+  100  git status 
+  101  git ls
+  102  git ls-files
+  103  ls -la
+  104  vim .gitignore 
+  105  git status 
+  106  git ls-files
+  107  #### revert commits
+  108  git log --oneline 
+  109  git revert f38473d
+  110  git log --oneline 
+  111  git status 
+  112  git revert 9e359a8
+  113  git status 
+  114  git log --oneline 
+  115  ls -la
+  116  git log --oneline 
+  117  cd -
+  118  cd /gitproject/project/
+  119  git log --oneline 
+  120  ### Rebase or HEAD
+  121  git reset --help
+  122  git reset --hard 1616d43
+  123  ls -la
+  124  git ls-files
+  125  git status 
+  126  history 
+  127  ls
+  128  history 
+  129  vim .bash_history 
+  130  #### git Branch
+  131  git branch 
+  132  cd /gitproject/project/
+  133  git branch 
+  134  git checkout -b branch1 master 
+  135  git branch 
+  136  git status 
+  137  ls
+  138  git ls-files
+  139  vim indexB.html
+  140  git status 
+  141  git add indexB.html 
+  142  git commit -m "index file is added in branch1"
+  143  git config --global user.email "devops@gmail.com"
+  144  git config --global user.email "devops"
+  145  git commit -m "index file is added in branch1"
+  146  git status 
+  147  cd /gitproject/project/
+  148  git log --oneline 
+  149  git log --oneline branch1 
+  150  git log --oneline master 
+  151  git checkout master 
+  152  git status 
+  153  git branch 
+  154  ls
+  155  git log --oneline master 
+  156  git merge branch1 master 
+  157  git log --oneline master 
+  158  git log --oneline branch1 
+  159  ls
+  160  git branch 
+  161  vim index1.html
+  162  git status 
+  163  git add index1.html 
+  164  git commit -m "added index1 file in master"
+  165  git status 
+  166  git log --oneline
+  167  git checkout branch1 
+  168  git status 
+  169  git log --oneline 
+  170  vim index1.html
+  171  git sta
+  172  git status 
+  173  git add index1.html 
+  174  git commit -m "added index1 file in branch1"
+  175  git log --oneline master 
+  176  git log --oneline branch1 
+  177  git checkout master 
+  178  git merge branch1 
+  179  ## showing CONFLICT
+  180  vim index1.html 
+  181  git add index1.html 
+  182  git commit -m "resolved the conflicts"
+  183  git merge branch1 
+  184  git status 
+  185  cat index1.html 
+  186  git checkout branch1 
+  187  ls
+  188  cat index1.html 
+  189  git checkout master 
+  190  git status 
+  191  #####################
+  192  ## Git Stash (temp location where working data is moved)
+  193  ls
+  194  vim index.html 
+  195  vim index1.html 
+  196  git status 
+  197  git stash 
+  198  git status 
+  199  ls
+  200  git stash list 
+  201  git show stash@{0}
+  202  git status 
+  203  git stash pop stash@{0}
+  204  git status 
+  205  git stash list 
+  206  git stash 
+  207  git stash list 
+  208  git stash clear 
+  209  git stash list 
+  210  git stash 
+  211  ls
+  212  cat index.html 
+  213  cat index1.html 
+  214  vim index.html 
+  215  vim index1.html 
+  216  git status 
+  217  git stash 
+  218  git status 
+  219  git stash -p
+  220  git stash list 
+  221  git stash -p stash@{0}
+  222  git status 
+  223  ls
+  292  cd /gitproject/project/
+  293  ls
+  294  git push add origin https://github.com/sandipdabre/gitlab.git
+  295  git status 
+  296  git push add origin "https://github.com/sandipdabre/gitlab.git"
+  297  git push origin master
+  298  git init
+  299  ls
+  300  git merge branch1 
+  301  ls
+  302  git push add origin "https://github.com/sandipdabre/gitlab.git"
+  303  cd ..
+  304  mkdir newproj
+  305  cd newproj/
+  306  git init 
+  307  ls
+  308  ls -a
